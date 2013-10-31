@@ -26,8 +26,8 @@ import org.slf4j.LoggerFactory;
 
 import com.redhat.consulting.jasper.JasperService;
 import com.redhat.consulting.jasper.exception.UnexpectedReportException;
-import com.redhat.consulting.jasper.request.JasperRequestContext;
-import com.redhat.consulting.jasper.request.JasperRequestHandler;
+import com.redhat.consulting.jasper.request.JasperReportContext;
+import com.redhat.consulting.jasper.request.JasperReportHandler;
 
 @MessageDriven(name = "CommandRequestMDB", activationConfig = {
 		 @ActivationConfigProperty(propertyName = "destinationType", propertyValue = "javax.jms.Queue"),
@@ -59,8 +59,8 @@ public class CommandExecutorMDB implements MessageListener {
 		
 		try {
 			//try and call the report service..
-			JasperRequestContext requestContext = (JasperRequestContext)objectMessage.getObject();
-			JasperRequestHandler requestHandler = jasperService.getRequestHandler(requestContext);
+			JasperReportContext requestContext = (JasperReportContext)objectMessage.getObject();
+			JasperReportHandler requestHandler = jasperService.getRequestHandler(requestContext);
 			InputStream is = requestHandler.requestInputStream();
 			byte[] bytes = IOUtils.toByteArray(is);
 			

@@ -20,7 +20,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import com.redhat.consulting.jasper.exception.ReportException;
-import com.redhat.consulting.jasper.request.JasperRequestContext;
+import com.redhat.consulting.jasper.request.JasperReportContext;
 
 
 @LocalBean
@@ -51,7 +51,7 @@ public class AsyncCommandExecutorBean {
     }
 	
 	
-	public String requestReport(JasperRequestContext context) throws ReportException {
+	public String requestReport(JasperReportContext context) throws ReportException {
 		String uuid = UUID.randomUUID().toString();
 		try {
 			ObjectMessage request = session.createObjectMessage();

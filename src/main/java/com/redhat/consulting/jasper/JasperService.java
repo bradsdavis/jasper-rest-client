@@ -6,8 +6,8 @@ import javax.enterprise.context.RequestScoped;
 import org.apache.commons.httpclient.HttpClient;
 import org.jboss.arquillian.core.api.annotation.Inject;
 
-import com.redhat.consulting.jasper.request.JasperRequestContext;
-import com.redhat.consulting.jasper.request.JasperRequestHandler;
+import com.redhat.consulting.jasper.request.JasperReportContext;
+import com.redhat.consulting.jasper.request.JasperReportHandler;
 
 @ApplicationScoped
 public class JasperService {
@@ -19,7 +19,7 @@ public class JasperService {
 	private Environment environment;
 	
 	@RequestScoped
-	public JasperRequestHandler getRequestHandler(JasperRequestContext context) {
-		return new JasperRequestHandler(client, environment.getBaseUri(), context);
+	public JasperReportHandler getRequestHandler(JasperReportContext context) {
+		return new JasperReportHandler(client, environment.getBaseUri(), context);
 	}
 }
